@@ -12,7 +12,7 @@ while read LINE; do
     echo $LINE >> $indexFile
 done < head
 dirn="posts"
-for entry in `ls $dirn`; do
+for entry in `ls -t $dirn`; do
         posts[$cunt]=$entry
     ((cunt=$cunt+1))
 done
@@ -20,11 +20,9 @@ echo "<div id='content'>" >> index.html
 echo "<h3> my posts </h3>" >> index.html
 echo "<ul>" >> index.html
 arrLen=${#posts[@]}
-j=arrLen
-for (( j=arrLen-1; j>=0; j-- ));
+for (( j=0; j<= arrLen-1; j++ ));
 do
 	echo "<li><a href='/$dirn/${posts[$j]}'>${posts[$j]}</a></li>" >> index.html
-	echo "<a href='/$dirn/${posts[$j]}'>${posts[$j]}</a>"
 done
 echo "</ul>" >> index.html
 echo "</div>" >> index.html
