@@ -1,0 +1,11 @@
+# ignore files named foo[1-9].txt
+foo\[1-9\].txt
+# ignore html files generated from foo txt files
+foo\[1-9\].txt.html
+# ignore lastPost
+lastPost
+# ignore files in back archive, drafts, and posts
+posts/
+drafts/
+back/
+archive/
