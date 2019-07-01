@@ -1,6 +1,34 @@
 #!/bin/bash
+lastPostN=""
+if [ ! -f ./index.html ]; then
+    touch index.html
+fi
+
+if [ ! -f ./lastPost ]; then
+    touch lastPost
+fi
+
+if [ ! -d ./back ]; then
+    mkdir back
+fi
 back=".back"
 newpost=$1.html
+if [ ! -d ./drafts ]; then
+    mkdir drafts
+fi
+
+if [ ! -d ./posts ]; then
+    mkdir posts
+fi
+
+if [ -s ./lastPost ]; then
+	while read LINE; do
+	    lastPostN=$LINE
+	done < lastPost
+fi
+
+echo "lastpost is ${lastPostN}"
+
 cp $1 drafts/$newpost
 touch posts/$newpost
 
@@ -14,8 +42,10 @@ echo "<div id='content'>" >> posts/$newpost
 while read line; do
     echo $line >> posts/$newpost
 done < $1
+if [ -s ./lastPost ]; then
+	echo "<br><a href='/posts/$lastPostN.html'>previous post $lastPostN.html</a>" >> posts/$newpost
+fi
 echo "</div>" >> posts/$newpost
-
 echo "</body></html>" >> posts/$newpost
-echo "done?"
+echo $newpost > lastPost
 /bin/bash genIndex.sh
