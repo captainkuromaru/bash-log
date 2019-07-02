@@ -12,7 +12,9 @@ if [ ! -d ./back ]; then
     mkdir back
 fi
 back=".back"
-newpost=$1.html
+newpost=${1%%.*}
+newpost=$newpost.html
+
 if [ ! -d ./drafts ]; then
     mkdir drafts
 fi
