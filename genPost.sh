@@ -42,10 +42,15 @@ echo "<div id='content'>" >> posts/$newpost
 while read line; do
     echo $line >> posts/$newpost
 done < $1
+echo "<div id='other posts'>" >> posts/$newpost
 if [ -s ./lastPost ]; then
 	echo "<br><a href='/posts/$lastPostN.html'>previous post $lastPostN.html</a>" >> posts/$newpost
 fi
 echo "</div>" >> posts/$newpost
+echo "</div>" >> posts/$newpost
 echo "</body></html>" >> posts/$newpost
 echo $newpost > lastPost
-/bin/bash genIndex.sh
+#/bin/bash genIndex.sh
+if [ ! $lastPostN == "" ]; then
+	/bin/bash retroGenPost0.sh $lastPostN $newpost
+fi
