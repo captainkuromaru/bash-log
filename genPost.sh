@@ -44,7 +44,7 @@ while read line; do
 done < $1
 echo "<div id='other posts'>" >> posts/$newpost
 if [ -s ./lastPost ]; then
-	echo "<br><a href='/posts/$lastPostN.html'>previous post $lastPostN.html</a>" >> posts/$newpost
+	echo "<br><a href='/posts/$lastPostN'>previous post $lastPostN</a>" >> posts/$newpost
 fi
 echo "</div>" >> posts/$newpost
 echo "</div>" >> posts/$newpost
