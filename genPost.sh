@@ -41,9 +41,22 @@ done < head
 echo "<div id='goback'><a href='/index.html'>go back</a></div>" >> posts/$newpost
 
 echo "<div id='content'>" >> posts/$newpost
+regexp="^#.*"
 while read line; do
-    echo $line >> posts/$newpost
+	#if [[ $LINE=~ $regexp ]]; then
+	##postTitle= `$LINE | tr -d '#'` && echo $postTitle
+	#	echo $LINE;
+	#fi
+	case "$line" in
+		\#*)
+			postTitle=$line;;
+		*) continue;;
+	esac
+	if [ ! $line == $postTitle ]; then
+		echo $line >> posts/$newpost
+	fi
 done < $1
+postTitle="$(echo $postTitle | tr -d '#')"
 echo "<div id='other posts'>" >> posts/$newpost
 if [ -s ./lastPost ]; then
 	echo "<br><a href='/posts/$lastPostN'>previous post $lastPostN</a>" >> posts/$newpost
@@ -53,6 +66,7 @@ echo "</div>" >> posts/$newpost
 echo "</body></html>" >> posts/$newpost
 echo $newpost > lastPost
 #/bin/bash genIndex.sh
+sed -i "/<head>/a <title>${postTitle}</title>" posts/$newpost
 if [ ! $lastPostN == "" ]; then
 	/bin/bash retroGenPost0.sh $lastPostN $newpost
 fi

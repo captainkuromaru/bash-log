@@ -4,7 +4,7 @@ foo\[1-9\].txt
 foo\[1-9\].txt.html
 # ignore lastPost
 lastPost
-# ignore files in back archive, drafts, and posts
+# ignore files in back, archive, drafts, and posts
 posts/
 drafts/
 back/
