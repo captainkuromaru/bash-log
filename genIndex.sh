@@ -22,9 +22,9 @@ echo "<ul>" >> index.html
 arrLen=${#posts[@]}
 for (( j=0; j<= arrLen-1; j++ ));
 do
-	echo "<li><a href='/$dirn/${posts[$j]}'>${posts[$j]}</a></li>" >> index.html
+	echo "<li><a href='./$dirn/${posts[$j]}'>${posts[$j]}</a></li>" >> index.html
 done
 echo "</ul>" >> index.html
 echo "</div>" >> index.html
-echo "<div id='goback'><a href='/'> go back to main page </a></div>" >> index.html
+echo "<div id='goback'><a href='/'> main page </a></div>" >> index.html
 echo "</body></html>" >> index.html
