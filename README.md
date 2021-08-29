@@ -4,6 +4,8 @@ bash log (blog for short) is a small script (scripts) that generates html files 
 the current version doesn't do much, just makes a post html file from a file you give it to it and then generates "index" of all your posts
 
 ### notes
+i suggest you create css/style.css file :)
+
 the next thing is setting title tags for the post based drafts
 
 ## future features
